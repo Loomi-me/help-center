@@ -3,7 +3,8 @@
 In this tutorial we'll cover the process of installing Visually.io to your headless `hydrogen1` storefront.
 
 ### Add Visually.io SDK
-Include Visually.io runtime dependecies in your index.html `<head>` section
+Include Visually.io runtime dependecies in your index.html `<head>` section,
+don't forget to replace `ANALYTICS_KEY` and `STORE_ALIAS` with the ones that Visually.io has given you.
 ```html
 <!--  index.html  -->
 <!DOCTYPE html>
@@ -20,7 +21,7 @@ Include Visually.io runtime dependecies in your index.html `<head>` section
 
     <!--    VISUALLY SDK  -->
     <script type="text/javascript" rel="preconnect prefetch"
-            src="https://sdk.loomi-prod.xyz/widgets/vsly-preact.min.js?k=${ANALYTICS_KEY}&e=2&s=${STORE_ALIAS}"></script>
+            src="https://sdk.loomi-prod.xyz/widgets/vsly-preact.min.js?k=ANALYTICS_KEY&e=2&s=STORE_ALIAS"></script>
     <script type="text/javascript" rel="preconnect prefetch"
             src="https://sdk.loomi-prod.xyz/v/visually-hydrogen.js"></script>
     <script defer type="application/javascript" src="https://sdk.loomi-prod.xyz/v/visually-hydrogen-a.js"></script>
