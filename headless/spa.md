@@ -1,7 +1,9 @@
-# Visually.io SPA integration
+## Ecommerce SPA/PWA Integration
 
+Welcome to our comprehensive tutorial on integrating Visually.io into your custom headless storefront. This guide will walk you through the process step by step.
 
-- Add visually.io javascript SDK to document HEAD
+### Add Visually.io SDK
+To get started, you need to include the Visually.io runtime dependencies in the <head> section of your index.html file. Be sure to place these script tags as close to the beginning of the <head> tag as possible. Replace ANALYTICS_KEY and STORE_ALIAS with the values provided to you by Visually.io.
 
 ```html
 <!--  index.html  -->
@@ -11,7 +13,6 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/src/assets/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<!--    ...     -->
 
     <!--    VISUALLY SDK  -->
     <script type="text/javascript" rel="preconnect prefetch"
@@ -28,32 +29,10 @@
 </html>
 ```
 
-notice the code between the `<!--    VISUALLY SDK  -->` comments
-
-- ANALYTICS_KEY -> shopify store id
-- STORE_ALIAS -> shopify customer alias ( for example, if your shopify store domain is banana-1.myshopify.com, your alias will be BANANA_1 )
-
----
-
-- initialize visually.io sdk with an instrumentation tool
-
-Visually.io requires access an instrumentation object that will allow us to control ('instrument') the online store using javascript.
-In addition, Visually.io exposes some global methods that need to be called from React hooks ( for example )
-When important events occur, such as 
-- product added to cart
-- user logged in
-
-
-Below are the relevant typescript interfaces
+### Notify our SDK on context changes:
+To enable Visually.io to send analytics and track the user's journey throughout the session, you must set up the following hooks in your code:
 
 ```typescript
-export interface CartBase {
-  items: Array<{ variant_id: number, quantity: number, product_id: number, price: number }>
-  token: string
-  currency: string
-  total_price: number
-}
-
 declare global {
   interface Window {
     visually: {
@@ -66,9 +45,26 @@ declare global {
       visuallyConnect: (instrument: VisuallyInstrument) => void
     }
   }
-
 }
-export interface VisuallyInstrument {
+```
+
+For instance, when the currency changes, you should call:
+```typescript
+window.visually.onCurrencyChanged(currentCurrency || "USD")
+```
+
+### Create a Visually.io Instrument
+To allow Visually.io to interact with various components on your storefront, you need to create an object that adheres to the following interface:
+
+```typescript
+interface CartBase {
+  items: Array<{ variant_id: number, quantity: number, product_id: number, price: number }>
+  token: string
+  currency: string
+  total_price: number
+}
+
+interface VisuallyInstrument {
   openCartDrawer: () => void;
   closeCartDrawer: () => void;
   // should create cart if none
@@ -83,30 +79,13 @@ export interface VisuallyInstrument {
 }
 ```
 
-
-During initial page load, in the root of your application
-we need to be initialized as follows
-where instrumentationTool implements the `VisuallyInstrument` interface
-
+After defining your instrument, invoke our bootstrap method during the initial page load at the root of your application:
 ```typescript
-  useEffect(() => {
-    window.visuallyConnect(instrumentationTool)
+useEffect(() => {
+  window.visuallyConnect(instrumentationTool)
 }, []);
 ```
 
+Here, instrumentationTool should implement the VisuallyInstrument interface. This ensures that Visually.io is properly integrated into your ecommerce SPA/PWA.
 
-In addition, there are the following global methods that need to be called when the following events occur:
-- PDP navigation, variant selection
-`onProductChanged?: (productId: number, selectedVariantId: number, variantPrice: number) => void;`
-- currency chage
-`onCurrencyChanged?: (currency: string) => void;`
-- page type changed 
-`onPageTypeChanged?: (pageType: 'home'|'product'|'catalog'|'other') => void;`
-- locale changed:
-`onLocaleChanged?: (locale: string) => void;`
-the locale should be a valid locale string, for example : `en-US`
-https://www.science.co.il/language/Locale-codes.php
-- on every cart update
-`onCartChanged?: (cart: CartBase) => void;`
-- on user signin
-`onUserIdChanged?: (userId: string) => void;`
+For any further questions or assistance, please don't hesitate to reach out to us.
