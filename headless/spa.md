@@ -58,8 +58,8 @@ declare global {
   interface Window {
     visually: {
       onProductChanged: (productId: number, selectedVariantId: number, variantPrice: number) => void;
-      onCurrencyChanged: (currency: 'home'|'product'|'catalog'|'other') => void;
-      onPageTypeChanged: (currency: string) => void;
+      onCurrencyChanged: (currency: string) => void;
+      onPageTypeChanged: (pageType: 'home'|'product'|'catalog'|'other') => void;
       onLocaleChanged: (locale: string) => void;
       onCartChanged: (cart: CartBase) => void;
       onUserIdChanged: (userId: string) => void;
