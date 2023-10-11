@@ -101,7 +101,7 @@ In addition, there are the following global methods that need to be called when 
 - currency chage
 `onCurrencyChanged?: (currency: string) => void;`
 - page type changed 
-`onPageTypeChanged?: (currency: 'home'|'product'|'catalog'|'other') => void;`
+`onPageTypeChanged?: (pageType: 'home'|'product'|'catalog'|'other') => void;`
 - locale changed:
 `onLocaleChanged?: (locale: string) => void;`
 the locale should be a valid locale string, for example : `en-US`
