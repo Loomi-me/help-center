@@ -56,7 +56,6 @@ export interface CartBase {
 
 declare global {
   interface Window {
-    // @ts-ignore
     visually: {
       onProductChanged?: (productId: number, selectedVariantId: number, variantPrice: number) => void;
       onCurrencyChanged?: (currency: 'home'|'product'|'catalog'|'other') => void;
