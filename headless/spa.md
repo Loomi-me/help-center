@@ -57,13 +57,13 @@ export interface CartBase {
 declare global {
   interface Window {
     visually: {
-      onProductChanged?: (productId: number, selectedVariantId: number, variantPrice: number) => void;
-      onCurrencyChanged?: (currency: 'home'|'product'|'catalog'|'other') => void;
-      onPageTypeChanged?: (currency: string) => void;
-      onLocaleChanged?: (locale: string) => void;
-      onCartChanged?: (cart: CartBase) => void;
-      onUserIdChanged?: (userId: string) => void;
-      visuallyConnect?: (instrument: VisuallyInstrument) => void
+      onProductChanged: (productId: number, selectedVariantId: number, variantPrice: number) => void;
+      onCurrencyChanged: (currency: 'home'|'product'|'catalog'|'other') => void;
+      onPageTypeChanged: (currency: string) => void;
+      onLocaleChanged: (locale: string) => void;
+      onCartChanged: (cart: CartBase) => void;
+      onUserIdChanged: (userId: string) => void;
+      visuallyConnect: (instrument: VisuallyInstrument) => void
     }
   }
 
