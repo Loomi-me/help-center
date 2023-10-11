@@ -3,7 +3,7 @@
 Welcome to our comprehensive tutorial on integrating Visually.io into your custom headless storefront. This guide will walk you through the process step by step.
 
 ### Add Visually.io SDK
-To get started, you need to include the Visually.io runtime dependencies in the <head> section of your index.html file. Be sure to place these script tags as close to the beginning of the <head> tag as possible. Replace ANALYTICS_KEY and STORE_ALIAS with the values provided to you by Visually.io.
+To get started, you need to include the Visually.io runtime dependencies in the <head> section of your index.html file. Be sure to place these script tags as close to the beginning of the <head> tag as possible. Replace `ANALYTICS_KEY` and `STORE_ALIAS` with the values provided to you by Visually.io.
 
 ```html
 <!--  index.html  -->
