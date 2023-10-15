@@ -88,4 +88,17 @@ useEffect(() => {
 
 Here, instrumentationTool should implement the VisuallyInstrument interface. This ensures that Visually.io is properly integrated into your ecommerce SPA/PWA.
 
+
+# Allowed domains
+
+If the SPA has a security mechanism that allows the website to run only on specific domains
+We require to add the following domains to the domains 'allow list'
+
+- visually.io
+- loomi.me
+- vsly.local:8000
+
+
 For any further questions or assistance, please don't hesitate to reach out to us.
+
+
