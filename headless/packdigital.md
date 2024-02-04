@@ -1,39 +1,10 @@
-## Ecommerce SPA/PWA Integration
+## Pack-Digital SPA Integration
 
-Welcome to our comprehensive tutorial on integrating Visually.io into your custom headless storefront. This guide will walk you through the process step by step.
+Welcome to our comprehensive tutorial on integrating Visually.io into your pack-digital headless storefront. This guide will walk you through the process step by step.  
+DISCLAIMER: this is an example of integration to the most basic sturcture of pack-digital, if your code looks different please contact our technial support team.
 
-- add the be bellow VisuallyIo.tsx file to the root of your application
-```javascript
-// layouts/Storefront.jsx
-// ...
-  return (
-    <GlobalContextProvider>
-        <StorefrontHead />
-        .
-        .
-        .
-        <VisuallyIo {...props} /> 
-        .
-        .
-        .
-    </GlobalContextProvider>
-)
-```
-
-The VisuallyIo component:
-- inserts visually.io sdk to the head of the SPA
-- syncs the state of the spa with the SDK
-every page navigation, cart change, currency change the below 
-
-And that's basically it. 
-The SDK connects to Visually.io api, runs all the experiences and reports all the analytics.
-
-Notice the:
-src="https://sdk.loomi-prod.xyz/widgets/vsly-preact.min.js?k=<API_KEY>&e=2&s=<ALIAS>"
-API_KEY and ALIAS in the sdk URL. 
-We provide those keys for every client.
-
-
+Create the following `VisuallyIo.tsx` file anywhere you want, this file will setup our analytics tracking & cart manipulation components.
+Notice that you'll need to replace the `<API_KEY>` and `<ALIAS>` placeholders with the ones given to you by our support team.
 
 ```javascript
  // VisuallyIo.tsx
@@ -170,3 +141,27 @@ export function VisuallyIo({ page, product }) {
   );
 }
 ```
+
+Afterwards you'll need to add the component we just created to you main global context:
+
+```javascript
+// layouts/Storefront.jsx
+// ...
+  return (
+    <GlobalContextProvider>
+        <StorefrontHead />
+        .
+        .
+        .
+        <VisuallyIo {...props} /> 
+        .
+        .
+        .
+    </GlobalContextProvider>
+)
+```
+
+And that's basically it. 
+The SDK connects to Visually.io api, runs all the experiences and reports all the analytics.
+
+
