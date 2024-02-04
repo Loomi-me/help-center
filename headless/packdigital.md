@@ -26,7 +26,13 @@ The VisuallyIo component:
 every page navigation, cart change, currency change the below 
 
 And that's basically it. 
-The SDK connects to Visually.io api, runs all the experiences and reports all the analytics. 
+The SDK connects to Visually.io api, runs all the experiences and reports all the analytics.
+
+Notice the:
+src="https://sdk.loomi-prod.xyz/widgets/vsly-preact.min.js?k=<API_KEY>&e=2&s=<ALIAS>"
+API_KEY and ALIAS in the sdk URL. 
+We provide those keys for every client.
+
 
 
 ```javascript
@@ -148,7 +154,7 @@ export function VisuallyIo({ page, product }) {
       <Script
         strategy="beforeInteractive"
         rel="preconnect prefetch"
-        src="https://sdk.loomi-prod.xyz/widgets/vsly-preact.min.js?k=js.35563012231&e=2&s=UNDEROUTFIT"
+        src="https://sdk.loomi-prod.xyz/widgets/vsly-preact.min.js?k=<API_KEY>&e=2&s=<ALIAS>"
       />
       <Script
         strategy="beforeInteractive"
